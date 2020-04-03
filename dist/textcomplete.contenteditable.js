@@ -111,7 +111,7 @@ var SearchResult = function () {
         }
         var match = this.strategy.matchText(beforeCursor);
         if (match) {
-          replacement = replacement.replace(/\$&/g, match[0]).replace(/\$(\d+)/g, function (_, p1) {
+          replacement = replacement.replace(/\$&/g, match[0]).replace(/\$(\d)/g, function (_, p1) {
             return match[parseInt(p1, 10)];
           });
           return [[beforeCursor.slice(0, match.index), replacement, beforeCursor.slice(match.index + match[0].length)].join(""), afterCursor];
@@ -168,14 +168,14 @@ var createCustomEvent = exports.createCustomEvent = function () {
       return event;
     };
   }
-}
+}();
 
 /**
  * Get the current coordinates of the `el` relative to the document.
  *
  * @private
  */
-();function calculateElementOffset(el) {
+function calculateElementOffset(el) {
   var rect = el.getBoundingClientRect();
   var _el$ownerDocument = el.ownerDocument,
       defaultView = _el$ownerDocument.defaultView,
@@ -205,13 +205,13 @@ function isDigit(charCode) {
  * @private
  */
 function getLineHeightPx(node) {
-  var computedStyle = window.getComputedStyle(node
+  var computedStyle = window.getComputedStyle(node);
 
   // If the char code starts with a digit, it is either a value in pixels,
   // or unitless, as per:
   // https://drafts.csswg.org/css2/visudet.html#propdef-line-height
   // https://drafts.csswg.org/css2/cascade.html#computed-value
-  );if (isDigit(computedStyle.lineHeight.charCodeAt(0))) {
+  if (isDigit(computedStyle.lineHeight.charCodeAt(0))) {
     // In real browsers the value is *always* in pixels, even for unit-less
     // line-heights. However, we still check as per the spec.
     if (isDigit(computedStyle.lineHeight.charCodeAt(computedStyle.lineHeight.length - 1))) {
@@ -231,9 +231,9 @@ function getLineHeightPx(node) {
   tempNode.innerHTML = "&nbsp;";
   tempNode.style.fontSize = computedStyle.fontSize;
   tempNode.style.fontFamily = computedStyle.fontFamily;
-  body.appendChild(tempNode
+  body.appendChild(tempNode);
   // Assume the height of the element is the line-height
-  );var height = tempNode.offsetHeight;
+  var height = tempNode.offsetHeight;
   body.removeChild(tempNode);
   return height;
 }
@@ -665,6 +665,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/*eslint no-unused-vars: off*/
 
 /**
  * Abstract class representing a editor target.
