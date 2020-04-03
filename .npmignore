@@ -8,10 +8,8 @@
 .travis.yml
 coverage
 docs
-lib/main.js
 npm-debug.log
 powered-test
-src
 test
 textcomplete.codemirror
 textcomplete.codemirror-*
