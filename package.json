@@ -4,7 +4,6 @@
   "description": "A textcomplete editor for content editable",
   "main": "lib/textcomplete.contenteditable.js",
   "scripts": {
-    "build": "yarn run clean && run-p build:*",
     "build:dist": "webpack && webpack --env=min",
     "build:docs": "run-p build:docs:*",
     "build:docs:css": "node-sass src/docs/main.scss docs/main.css --importer node_modules/node-sass-import",
